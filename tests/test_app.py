@@ -1,19 +1,24 @@
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from time import sleep
+import pytest
+import subprocess
 
-# Definindo Driver
-driver = webdriver.Firefox()
+@pytest.fixture
+def driver():
+    # Iniciando o Streamlit através do Subprocess
+    process = subprocess.Popen(["streamlit", "run", "src/app.py"])
 
-# Define um timeout
-driver.set_page_load_timeout(10) 
+    # Iniciando o WebDriver
+    driver = webdriver.Firefox()
+    driver.set_page_load_timeout(10)
+    yield driver
 
-# Utilizando Try-Except para entrar na página
-try:
-    driver.get("http://localhost:8501")
-    sleep(5)
-    print("Acessando Página com o devido sucesso")
-except TimeoutException:
-    print("Tempo de Carregamento excedeu todos os limites...")
-finally:
+    # Fechar o WebDriver
     driver.quit()
+    process.kill()
+
+def test_app_open(driver):
+    # Verificando se a página abre
+    driver.get("http://localhost:8501")
+    sleep(10)
