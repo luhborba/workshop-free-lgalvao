@@ -1,7 +1,7 @@
 # Projeto WorkShop Free - Luciano Galvão
 
 ## Leve em consideração que esta sendo usando Linux, com Pyenv e Poetry:
-[GitHub que pode ser usado como guia](https://github.com/luhborba/Wsl-Pyenv-Poetry)
+Você pode seguir esse guia que utilizei para utilização no WSL, assim você pode começar a partir da instalação do `PyEnv`: [GitHub que pode ser usado como guia](https://github.com/luhborba/Wsl-Pyenv-Poetry)
 
 1. Clone o repositório:
 ```bash
