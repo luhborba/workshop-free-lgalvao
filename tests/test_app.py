@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from time import sleep
 import pytest
 import subprocess
+import os
 
 @pytest.fixture
 def driver():
@@ -49,4 +50,9 @@ def test_app_insert_excel(driver):
     # Testando acesso
     driver.get("http://localhost:8501")
     sleep(8)
-    # Ainda em desenvolvimento
+    
+    sucess_file_path = os.path.abspath("data/planilha_vendas.xlsx")
+    driver.find_element(By.CSS_SELECTOR, 'input[type="file"]').send_keys(sucess_file_path)
+
+    sleep(4)
+    assert " O arquivo excel está de acordo com o padrão!" in driver.page_source
