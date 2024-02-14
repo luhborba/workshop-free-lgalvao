@@ -22,28 +22,28 @@ def driver():
 def test_app_open(driver):
     # Verificando se a página abre
     driver.get("http://localhost:8501")
-    sleep(8)
+    sleep(5)
 
 def test_app_title(driver):
     # Testando acesso
     driver.get("http://localhost:8501")
-    sleep(8)
+    sleep(5)
     # Capturando Título
     page_title = driver.title
     # Verificando se o título confere
-    title = "Validador Excel"
+    title = "Validador de Planilha"
     assert page_title == title
 
 def test_app_h1(driver):
     # Testando acesso
     driver.get("http://localhost:8501")
-    sleep(8)
+    sleep(5)
 
     # Capturando primeiro h1
     h1 = driver.find_element(By.TAG_NAME, "h1")
 
     # Verificando compatibilidade
-    texto = "Sistema de Envio de informações para o Domino PMJP-SMS"
+    texto = "Insira sua planilha para realizar a validação!"
     assert h1.text == texto
 
 def test_app_insert_excel(driver):
@@ -55,4 +55,4 @@ def test_app_insert_excel(driver):
     driver.find_element(By.CSS_SELECTOR, 'input[type="file"]').send_keys(sucess_file_path)
 
     sleep(4)
-    assert "A estrutura do arquivo está Correta" in driver.page_source
+    assert "A planilha está correta" in driver.page_source

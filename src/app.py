@@ -1,14 +1,15 @@
-import streamlit as st
+from frontend import ExcelValidadorUI
+from backend import process_excel
 
-st.set_page_config(
-    page_title="Validador Excel", 
-    page_icon=":snake:"
-)
+def main():
+    ui = ExcelValidadorUI()
+    ui.display_header()
 
-st.title("Sistema de Envio de informações para o Domino PMJP-SMS")
-st.header("Neste sistema você vai enviar as informações dos servidores(as) do seu setor, para que seja possível realizar a inserção no dominio")
+    upload_file = ui.upload_file()
 
-arquivo = st.file_uploader("Carregue seu arquivo Excel aqui", type=["xlsx"])
+    if upload_file:
+        result, error = process_excel(upload_file)
+        ui.display_result(result, error)
 
-if arquivo is not None:
-    st.success("A estrutura do arquivo está Correta")
+if __name__ == "__main__":
+    main()
