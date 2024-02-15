@@ -5,7 +5,7 @@ Este projeto de Data Quality foi desenvolvido após Workshop do [Luciano Vasconc
 
 **GitHub do Projeto:** [Deputados-LuhBorba](https://github.com/luhborba/projeto_camara_deputados)<br>
 **Documentação do Projeto:**  [Documentacao](https://luhborba.github.io/workshop-free-lgalvao/)<br>
-**Portifólio Pessoal:**  [Portifólio](https://luhborba.github.io/workshop-free-lgalvao/](https://luhborba.github.io/portifolio/)<br>
+**Portifólio Pessoal:**  [Portifólio](https://luhborba.github.io/portifolio/)<br>
 
 
 ## Stack do Projeto
