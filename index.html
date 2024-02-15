@@ -295,6 +295,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.app.main" class="md-nav__link">
+    <span class="md-ellipsis">
+      main
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="main">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#frontendpy" class="md-nav__link">
     <span class="md-ellipsis">
@@ -303,6 +318,21 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.frontend.ExcelValidadorUI" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExcelValidadorUI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExcelValidadorUI">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#backendpy" class="md-nav__link">
@@ -315,6 +345,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.backend.process_excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      process_excel
+    </span>
+  </a>
   
 </li>
       
@@ -413,6 +452,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.app.main" class="md-nav__link">
+    <span class="md-ellipsis">
+      main
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="main">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#frontendpy" class="md-nav__link">
     <span class="md-ellipsis">
@@ -421,6 +475,21 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.frontend.ExcelValidadorUI" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExcelValidadorUI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ExcelValidadorUI">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#backendpy" class="md-nav__link">
@@ -433,6 +502,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#src.backend.process_excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      process_excel
+    </span>
+  </a>
   
 </li>
       
@@ -653,83 +731,198 @@
 from frontend import ExcelValidadorUI
 # Importando Função do Arquivo BackEnd
 from backend import process_excel
-
-def main():
-    ui = ExcelValidadorUI()
-    ui.display_header()
-
-    upload_file = ui.upload_file()
-
-    if upload_file:
-        result, error = process_excel(upload_file)
-        ui.display_result(result, error)
-
-if __name__ == &quot;__main__&quot;:
-    main()
 </code></pre>
-<h3 id="frontendpy">Frontend.py</h3>
+<p>Função especifica para interligar frontend e backend, de forma que o projeto tenha uma organização e padronização.</p>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<a id="src.app.main"></a>
+  <div class="doc doc-contents first">
+
+          <details class="quote">
+            <summary>Source code in <code>src/app.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">ui</span> <span class="o">=</span> <span class="n">ExcelValidadorUI</span><span class="p">()</span>
+    <span class="n">ui</span><span class="o">.</span><span class="n">display_header</span><span class="p">()</span>
+
+    <span class="n">upload_file</span> <span class="o">=</span> <span class="n">ui</span><span class="o">.</span><span class="n">upload_file</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">upload_file</span><span class="p">:</span>
+        <span class="n">result</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="n">process_excel</span><span class="p">(</span><span class="n">upload_file</span><span class="p">)</span>
+        <span class="n">ui</span><span class="o">.</span><span class="n">display_result</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div><h3 id="frontendpy">Frontend.py</h3>
 <p>Este arquivo é para configuração do frontend da página, assim deixando de forma separada do <code>app.py</code>.</p>
 <pre><code class="language-python"># Importando Streamlit
 import streamlit as st
-
-# Criando Classe para FrontEnd, para melhor organização e uso
-class ExcelValidadorUI:
-
-    def __init__(self):
-        self.set_page_config()
-
-    # Criando função para configuração das páginas
-    def set_page_config(self):
-        st.set_page_config(
-            page_title=&quot;Validador de Planilha&quot;,
-            page_icon=&quot;:snake:&quot;
-        )
-
-    # Criando função para Header da página
-    def display_header(self):
-        st.title(&quot;Insira sua planilha para realizar a validação!&quot;)
-
-    # Criando função para o componente de file uploader
-    def upload_file(self):
-        return st.file_uploader(&quot;Carregue sua planilha&quot;, type=[&quot;xlsx&quot;])
-
-    # Criando função especifica para mostragem de error
-    def display_result(self, result, error):
-        if error:
-            st.error(f&quot;Erro na validação: {error}&quot;)
-        else:
-            st.success(&quot;A planilha está correta&quot;)
 </code></pre>
-<h3 id="backendpy">Backend.py</h3>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="src.frontend.ExcelValidadorUI"></a>
+  <div class="doc doc-contents first">
+
+
+            <details class="quote">
+              <summary>Source code in <code>src/frontend.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ExcelValidadorUI</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">()</span>
+
+    <span class="c1"># Criando função para configuração das páginas</span>
+    <span class="k">def</span> <span class="nf">set_page_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">(</span>
+            <span class="n">page_title</span><span class="o">=</span><span class="s2">&quot;Validador de Planilha&quot;</span><span class="p">,</span>
+            <span class="n">page_icon</span><span class="o">=</span><span class="s2">&quot;:snake:&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Criando função para Header da página</span>
+    <span class="k">def</span> <span class="nf">display_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Insira sua planilha para realizar a validação!&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Criando função para o componente de file uploader</span>
+    <span class="k">def</span> <span class="nf">upload_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">file_uploader</span><span class="p">(</span><span class="s2">&quot;Carregue sua planilha&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;xlsx&quot;</span><span class="p">])</span>
+
+    <span class="c1"># Criando função especifica para mostragem de error</span>
+    <span class="k">def</span> <span class="nf">display_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">error</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erro na validação: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s2">&quot;A planilha está correta&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  </div>
+
+
+</div><h3 id="backendpy">Backend.py</h3>
 <p>Este arquivo é para configuração do backend da página, fazendo toda validação dos arquivos 'xlsx'.</p>
 <pre><code class="language-python"># Importando Pandas
 import pandas as pd
 # Importando classe de Vendas do arquivo de contratos.py
 from contrato import Vendas
-
-# Criando função de validação do arquivo excel
-def process_excel(uploaded_file):
-    try:
-        df = pd.read_excel(uploaded_file)
-
-        # Verificando se há colunas extras
-        extras_cols = set(df.columns) - set(Vendas.model_fields.keys())
-        if extras_cols:
-            return False, f&quot;Existem mais colunas que o necessário: {', '.join(extras_cols)}&quot;
-
-        # Validar cada linha com o contrato
-        for index, row in df.iterrows():
-            try:
-                _ = Vendas(**row.to_dict())
-            except Exception as e:
-                raise ValueError(f&quot;Erro na linha {index + 2}: {e}&quot;)
-
-        return True, None
-    except ValueError as ve:
-        return False, str(ve)
-    except Exception as e:
-        return False, f&quot;Erro Inesperado: {str(e)}&quot;
 </code></pre>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<a id="src.backend.process_excel"></a>
+  <div class="doc doc-contents first">
+
+          <details class="quote">
+            <summary>Source code in <code>src/backend.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process_excel</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">)</span>
+
+        <span class="c1"># Verificando se há colunas extras</span>
+        <span class="n">extras_cols</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">Vendas</span><span class="o">.</span><span class="n">model_fields</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">extras_cols</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Existem mais colunas que o necessário: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">extras_cols</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="c1"># Validar cada linha com o contrato</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">_</span> <span class="o">=</span> <span class="n">Vendas</span><span class="p">(</span><span class="o">**</span><span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erro na linha </span><span class="si">{</span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">ve</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ve</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Erro Inesperado: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
 
 
 
